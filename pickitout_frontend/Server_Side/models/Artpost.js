@@ -2,11 +2,12 @@ const mongoose = require('mongoose');
 
 
 const ArtpostSchema = new mongoose.Schema({
-    style: String,
-    duration: String,
-    longevity: String,
-    description: String,
-    image: String,
+    name: String,
+    email: String,
+    zipcode: Number,
+    audio: String,
+    lat: Number,
+    long: Number,
     // image: {
     //     type: String, required: true
     // },
