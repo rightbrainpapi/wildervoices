@@ -1,8 +1,8 @@
 import React from 'react';
-import {Dimensions, SafeAreaView, ScrollView, TouchableHighlight, Image, StyleSheet, Button, View, Text } from 'react-native';
+import {Dimensions, SafeAreaView, ScrollView, TouchableHighlight, Image, StyleSheet, View, Text, TextInput } from 'react-native';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 import { createStackNavigator, createBottomTabNavigator, createAppContainer } from 'react-navigation'; // Version can be specified in package.json
-
+import {Card, CardSection, Header, Button, Input, Spinner} from '../common'
 //////////////////////////////
 //////////////////////////////
 ///////Camera Component///////
@@ -18,7 +18,10 @@ import { createStackNavigator, createBottomTabNavigator, createAppContainer } fr
 
 class FormScreen extends React.Component {
   state = {
-    photo: null,
+    email:'',
+    password: '',
+    error: '',
+    loading: false //by default I am not loading anything.
   }
   
 //   handleChoosePhoto = () => {
@@ -47,9 +50,51 @@ class FormScreen extends React.Component {
   render() {
 
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>This is the Form</Text>
-    </View>
+       
+    <Card >
+        <CardSection>
+            
+        <Input 
+        label='User'
+        placeholder='user'
+        />
+
+
+
+
+
+        </CardSection>
+        <CardSection>
+        <Input 
+        label='Email'
+        placeholder='user@gmail.com' 
+        value={this.state.email}
+        onChangeText={email => this.setState({email: email})}
+        />
+        </CardSection>
+        <CardSection>
+        <Input 
+        label='Zipcode'
+        placeholder='zipcode'/>
+        </CardSection>
+        <CardSection>
+        <Input 
+        label='Record'
+        placeholder='record'/>
+        </CardSection>
+      
+     
+{/*       
+      <Input placeholder='record'></Input>
+      <Text>DocuSign Trigger Here</Text> */}
+     <CardSection>     
+      <Button >
+            DocuSign
+      </Button> 
+      </CardSection>
+    </Card>
+       
+
     );
   }
 }
