@@ -24,7 +24,7 @@ const Form = createStackNavigator(
 
       //Styles the Header
       headerStyle: {
-        backgroundColor: 'rgba(255, 214, 172, .3)',
+        backgroundColor: '#3E71BD',
         height: 70,
         // marginBottom: 100,
       //         style: {
@@ -49,7 +49,7 @@ const Map = createStackNavigator(
 
       //Styles the Header
       headerStyle: {
-        backgroundColor: 'rgba(255, 214, 172, .3)',
+        backgroundColor: '#3E71BD',
         height: 70,
         // marginBottom: 100,
       //         style: {
@@ -90,8 +90,8 @@ const Tabs = createBottomTabNavigator({  Form, Map },
       fontWeight: 'bold',
     },
     style: {
-      backgroundColor: 'rgba(255, 214, 172, .9)',
-      // backgroundColor: 'rgba(255, 214, 172, .3)',
+      backgroundColor: '#3E71BD',
+      // backgroundColor: '#3E71BD',
     },
   }
 }

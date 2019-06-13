@@ -3,6 +3,9 @@ import {Dimensions, SafeAreaView, ScrollView, TouchableHighlight, Image, StyleSh
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 import { createStackNavigator, createBottomTabNavigator, createAppContainer } from 'react-navigation'; // Version can be specified in package.json
 import {Card, CardSection, Header, Button, Input, Spinner} from '../common'
+import Script from 'react-load-script'
+// import console = require('console');
+
 //////////////////////////////
 //////////////////////////////
 ///////Camera Component///////
@@ -10,22 +13,15 @@ import {Card, CardSection, Header, Button, Input, Spinner} from '../common'
 //////////////////////////////
 
 
-// import React from 'react'
-// import { View, Text, Image, Button } from 'react-native'
-// import ImagePicker from 'react-native-image-picker'
 
-//Initialize Firebase
-// const docusignConfig = {
-//     environment: 'https://demo.docusign.net',
-//     accountId: 'a06e4408-79bf-41c1-931a-8c466bda73cb',
-//     clickwrapId: 'e988b56a-0b7e-4e53-82b7-f6858cfd103f',
-//     clientUserId: 'UNIQUE_USER_ID',
-// };
 
 class FormScreen extends React.Component {
   state = {
+    user:'',
     email:'',
+    zipcode: '',
     password: '',
+    record:'',
     error: '',
     loading: false //by default I am not loading anything.
   }
@@ -43,12 +39,31 @@ class FormScreen extends React.Component {
     },
   };
   onButtonPress(){
-
-
+        this.setState({
+          email:'',
+          user:'',
+          zipcode: '',
+          record:'',
+          loading: false,
+          error: ''
+        })
   }
   render() {
 
     return (
+
+        // <Script
+        // url="https://demo.docusign.net/clickapi/sdk/latest/docusign-click.js"
+        // onCreate={
+        //     docuSignClick.Clickwrap.render({
+        //     environment: 'https://demo.docusign.net',
+        //     accountId: 'a06e4408-79bf-41c1-931a-8c466bda73cb',
+        //     clickwrapId: 'e988b56a-0b7e-4e53-82b7-f6858cfd103f',
+        //     clientUserId: 'UNIQUE_USER_ID'
+        //   }, '#ds-terms-of-service')}
+        // onError={console.log(err)}
+        // onLoad={console.log}
+        // />
        
     <Card >
         <CardSection>
@@ -56,13 +71,14 @@ class FormScreen extends React.Component {
         <Input 
         label='User'
         placeholder='user'
+        value={this.state.user}
+        onChangeText={user => this.setState({user: user})}
         />
 
 
-
-
-
         </CardSection>
+
+
         <CardSection>
         <Input 
         label='Email'
@@ -71,20 +87,29 @@ class FormScreen extends React.Component {
         onChangeText={email => this.setState({email: email})}
         />
         </CardSection>
+
         <CardSection>
         <Input 
         label='Zipcode'
-        placeholder='10454'/>
+        placeholder='10454'
+        value={this.state.zipcode}
+        onChangeText={zipcode => this.setState({zipcode: zipcode})}
+        />
         </CardSection>
+
+
         <CardSection>
         <Input 
         label='Record'
-        placeholder='record'/>
+        placeholder='record'
+        value={this.state.record}
+        onChangeText={record => this.setState({record: record})}
+        />
         </CardSection>
       
      <CardSection>     
       <Button 
-    //   onPress={this.onButtonPress.bind(this)}
+      onPress={this.onButtonPress.bind(this)}
       >
             DocuSign
       </Button> 

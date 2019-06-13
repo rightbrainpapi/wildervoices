@@ -129,26 +129,82 @@ axiosDataCall = async () =>{
          longitudeDelta: 0.0121,
        }}
      >
+
+
+
+
        {allposts.map((eachpost)=>{
         //  console.log(eachpost.lat)
         //  console.log(eachpost.long)
         const lat = eachpost.lat
         const long = eachpost.long
+        const comments = eachpost.audio
          return (
+           <View>
+
+           
           <MapView.Marker
           key={eachpost._id}
           coordinate={{
             latitude: 37.8651,
-            longitude: -119.5383
+            longitude: -119.5383,
           }}
             >
-   
           </MapView.Marker>
+         
+          {/* <CardSection>
+             <Text>{comments}</Text>
+          </CardSection> */}
+         
+        
+      
+    
+          </View>
          );
+         
+
        })}
 
        
      </MapView>
+
+       <View
+       style={styles.largeTextContainer}
+       >
+       {allposts.map((eachpost)=>{
+        //  console.log(eachpost.lat)
+        //  console.log(eachpost.long)
+        // const lat = eachpost.lat
+        // const long = eachpost.long
+        const id = eachpost._id
+        const comments = eachpost.audio
+        const name = eachpost.name
+         return (
+          <View 
+
+          style={styles.textContainer}
+          >
+             <Text
+              key={id}
+              style={styles.text}
+             >
+             
+             "{comments}" -{name}
+             
+             
+             </Text>
+
+
+          </View>
+         
+         );
+         
+
+       })}
+
+       </View>
+
+   
    </View>
     </View>
     );
@@ -162,10 +218,32 @@ const styles = StyleSheet.create({
     width: 400,
     justifyContent: 'flex-end',
     alignItems: 'center',
+    
   },
   map: {
     ...StyleSheet.absoluteFillObject,
+    alignItems: 'center',
   },
+  largeTextContainer:{
+    height: 200,
+    width: 200,
+    // backgroundColor: 'green',
+  },
+  textContainer:{
+    // height: 100,
+    // width: 50,
+    alignItems: 'center', 
+    justifyContent: 'center',
+    backgroundColor: '#9DCEEB',
+    flexDirection: 'column',
+    marginBottom: 10
+    // justifyContent: "space-between"
+
+  },
+  
+  text: {
+    color: 'black'
+  }
  });
 
 //I had to export the object with a key of MapScreen in order to
